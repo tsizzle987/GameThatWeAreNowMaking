@@ -43,7 +43,16 @@ namespace GameWeAreNowMaking
                 intCurrentHealth = intMaxHealth;
             } 
         }
-
+        
+        /// <summary>
+        /// Damages the character for the given amount
+        /// </summary>
+        /// <param name="intDamageAmount"></param>
+        private void take_damage(int intDamageAmount)
+        {
+            // Decreases the character's current health by the damage amount
+            intCurrentHealth -= intDamageAmount;
+        }
 
     }
 }
