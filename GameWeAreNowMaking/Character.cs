@@ -16,9 +16,8 @@ namespace GameWeAreNowMaking
         private int intEvasionRate { get; set; }
         // Creates the array used to store Skills
         private Skill[] arrSkills = new Skill[4];
-        // Creates the lists used to store Buffs and Debuffs
-        List<Buff> lisBuffs = new List<Buff>();
-        List<Debuff> lisDebuffs = new List<Debuff>();
+        // Creates the list used to store Conditions
+        List<Condition> lisConditions = new List<Condition>();
 
         public Character(int intGivenBaseDamage, int intGivenMaxHealth, int intGivenArmor, int intGivenCritRate, int intGivenEvasionRate)
         {
@@ -57,5 +56,31 @@ namespace GameWeAreNowMaking
             intCurrentHealth -= intDamageAmount;
         }
 
+        /// <summary>
+        /// Reduces all of the character's cooldowns
+        /// </summary>
+        private void reduce_cooldowns()
+        {
+           foreach (Skill skSkill in arrSkills)
+           {
+                skSkill.reduce_cooldown();
+           }
+        }
+
+        /// <summary>
+        /// Reduces the duration of the character's conditions, removing them if their duration is zero
+        /// </summary>
+        private void reduce_durations()
+        {
+            foreach (Condition coCondition in lisConditions)
+            {
+                coCondition.reduce_duration();
+
+                if (coCondition.intDuration == 0)
+                {
+                    lisConditions.Remove(coCondition);
+                }
+            }
+        }
     }
 }
