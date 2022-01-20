@@ -8,10 +8,10 @@ namespace GameWeAreNowMaking
 {
     class Skill
     {
-        private string strName;
-        private int intCooldown;
-        private int intCurrentCooldown;
-        private bool bolOffCooldown;
+        private string strName { get; set; }
+        private int intCooldown { get; set; }
+        private int intCurrentCooldown { get; set; }
+        private bool bolOffCooldown { get; set; }
 
         public Skill(string strGivenName, int intGivenCooldown)
         {

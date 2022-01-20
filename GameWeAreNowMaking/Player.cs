@@ -8,8 +8,8 @@ namespace GameWeAreNowMaking
 {
     class Player : Character
     {
-        private string strClass;
-        private int intCurrentExp;
+        private string strClass { get; set; }
+        private int intCurrentExp { get; set; }
 
         public Player(string strGivenClass, int intGivenBaseDamage, int intGivenMaxHealth, int intGivenArmor, int intGivenCritRate, int intGivenEvasionRate) : base(intGivenBaseDamage, intGivenMaxHealth, intGivenArmor, intGivenCritRate, intGivenEvasionRate)
         {

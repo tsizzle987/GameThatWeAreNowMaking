@@ -8,14 +8,17 @@ namespace GameWeAreNowMaking
 {
     class Character
     {
-        private int intBaseDamage;
-        private int intMaxHealth;
-        private int intCurrentHealth;
-        private int intArmor;
-        private int intCritRate;
-        private int intEvasionRate;
+        private int intBaseDamage { get; set; }
+        private int intMaxHealth { get; set; }
+        private int intCurrentHealth { get; set; }
+        private int intArmor { get; set; }
+        private int intCritRate { get; set; }
+        private int intEvasionRate { get; set; }
+        // Creates the array used to store Skills
         private Skill[] arrSkills = new Skill[4];
-
+        // Creates the lists used to store Buffs and Debuffs
+        List<Buff> lisBuffs = new List<Buff>();
+        List<Debuff> lisDebuffs = new List<Debuff>();
 
         public Character(int intGivenBaseDamage, int intGivenMaxHealth, int intGivenArmor, int intGivenCritRate, int intGivenEvasionRate)
         {
