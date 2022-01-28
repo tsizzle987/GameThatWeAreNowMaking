@@ -40,5 +40,14 @@ namespace GameWeAreNowMaking
                 bolOffCooldown = true;
             }
         }
+
+        /// <summary>
+        /// Resets the skill's cooldown
+        /// </summary>
+        public void reset_cooldown()
+        {
+            intCurrentCooldown = 0;
+            bolOffCooldown = true;
+        }
     }
 }
