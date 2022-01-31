@@ -82,5 +82,53 @@ namespace GameWeAreNowMaking
                 }
             }
         }
+
+        /// <summary>
+        /// Adds the given skill to the skill array if there is an available index
+        /// </summary>
+        /// <param name="skGivenSkill"></param>
+        private void add_skill(Skill skGivenSkill)
+        {
+            // For each index in the skill array...
+            for (int i = 0; i < arrSkills.Length; i++)
+            {
+                // If there is no skill in this index...
+                if (arrSkills[i] == null)
+                {
+                    // Set the current skill equal to the given skill and break out of the loop
+                    arrSkills[i] = skGivenSkill;
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Removes the given skill from the skill array
+        /// </summary>
+        /// <param name="skGivenSkill"></param>
+        private void remove_skill(Skill skGivenSkill)
+        {
+            // For each index in the skill array...
+            for (int i = 0; i < arrSkills.Length; i++)
+            {
+                // If the current skill is the given one...
+                if (arrSkills[i] == skGivenSkill)
+                {
+                    // Set the current skill to null and break out of the loop
+                    arrSkills[i] = null;
+                    break;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Removes the skill at the given index from the skill array
+        /// </summary>
+        /// <param name="intSkillIndex"></param>
+        private void remove_skill(int intSkillIndex)
+        {
+            arrSkills[intSkillIndex] = null;
+        }
     }
 }
