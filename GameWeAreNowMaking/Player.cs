@@ -10,13 +10,12 @@ namespace GameWeAreNowMaking
     {
         private string strClass { get; set; }
         private int intCurrentExp { get; set; }
+        private List<Skill> lisInitialSkills;
 
-        public Player(string strGivenClass, int intGivenBaseDamage, int intGivenMaxHealth, int intGivenArmor, int intGivenCritRate, int intGivenEvasionRate) : base(intGivenBaseDamage, intGivenMaxHealth, intGivenArmor, intGivenCritRate, intGivenEvasionRate)
+        public Player(string strGivenClass, int intGivenBaseDamage, int intGivenMaxHealth, int intGivenArmor, int intGivenCritRate, int intGivenEvasionRate, List<Skill> lisGivenSkills) : base(intGivenBaseDamage, intGivenMaxHealth, intGivenArmor, intGivenCritRate, intGivenEvasionRate, lisGivenSkills)
         {
-            strClass = strGivenClass;
-            intCurrentExp = 0;
+            this.strClass = strGivenClass;
+            this.intCurrentExp = 0;
         }
-
-
     }
 }

@@ -29,5 +29,11 @@ namespace GameWeAreNowMaking
                 intDuration--;
             }
         }
+
+
+
+
+        // Make them static objects within the class!! Wow it works!! Maybe??
+        public static Condition conBleed = new Condition("Bleed", 0);
     }
 }

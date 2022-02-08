@@ -19,14 +19,19 @@ namespace GameWeAreNowMaking
         // Creates the list used to store Conditions
         List<Condition> lisConditions = new List<Condition>();
 
-        public Character(int intGivenBaseDamage, int intGivenMaxHealth, int intGivenArmor, int intGivenCritRate, int intGivenEvasionRate)
+        public Character(int intGivenBaseDamage, int intGivenMaxHealth, int intGivenArmor, int intGivenCritRate, int intGivenEvasionRate, List<Skill> lisGivenSkills)
         {
-            intBaseDamage = intGivenBaseDamage;
-            intMaxHealth = intGivenMaxHealth;
-            intCurrentHealth = intMaxHealth;
-            intArmor = intGivenArmor;
-            intCritRate = intGivenCritRate;
-            intEvasionRate = intGivenEvasionRate;
+            this.intBaseDamage = intGivenBaseDamage;
+            this.intMaxHealth = intGivenMaxHealth;
+            this.intCurrentHealth = this.intMaxHealth;
+            this.intArmor = intGivenArmor;
+            this.intCritRate = intGivenCritRate;
+            this.intEvasionRate = intGivenEvasionRate;
+
+            for (int i = 0; i < lisGivenSkills.Count; i++)
+            {
+                this.arrSkills[i] = lisGivenSkills[i];
+            }
         }
 
         /// <summary>
@@ -36,13 +41,13 @@ namespace GameWeAreNowMaking
         private void heal(int intHealAmount)
         {
             // Increases the character's current health by the heal amount
-            intCurrentHealth += intHealAmount;
+            this.intCurrentHealth += intHealAmount;
             
             // If the character's current health is above its max health...
-            if (intCurrentHealth > intMaxHealth)
+            if (this.intCurrentHealth > this.intMaxHealth)
             {
                 // ...set the current health equal to the max health
-                intCurrentHealth = intMaxHealth;
+                this.intCurrentHealth = this.intMaxHealth;
             } 
         }
         
@@ -53,7 +58,7 @@ namespace GameWeAreNowMaking
         private void take_damage(int intDamageAmount)
         {
             // Decreases the character's current health by the damage amount
-            intCurrentHealth -= intDamageAmount;
+            this.intCurrentHealth -= intDamageAmount;
         }
 
         /// <summary>
@@ -61,7 +66,7 @@ namespace GameWeAreNowMaking
         /// </summary>
         private void reduce_cooldowns()
         {
-           foreach (Skill skSkill in arrSkills)
+           foreach (Skill skSkill in this.arrSkills)
            {
                 skSkill.reduce_cooldown();
            }
@@ -72,13 +77,13 @@ namespace GameWeAreNowMaking
         /// </summary>
         private void reduce_durations()
         {
-            foreach (Condition coCondition in lisConditions)
+            foreach (Condition coCondition in this.lisConditions)
             {
                 coCondition.reduce_duration();
 
                 if (coCondition.intDuration == 0)
                 {
-                    lisConditions.Remove(coCondition);
+                    this.lisConditions.Remove(coCondition);
                 }
             }
         }
@@ -90,13 +95,13 @@ namespace GameWeAreNowMaking
         private void add_skill(Skill skGivenSkill)
         {
             // For each index in the skill array...
-            for (int i = 0; i < arrSkills.Length; i++)
+            for (int i = 0; i < this.arrSkills.Length; i++)
             {
                 // If there is no skill in this index...
-                if (arrSkills[i] == null)
+                if (this.arrSkills[i] == null)
                 {
                     // Set the current skill equal to the given skill and break out of the loop
-                    arrSkills[i] = skGivenSkill;
+                    this.arrSkills[i] = skGivenSkill;
                     break;
                 }
             }
@@ -109,13 +114,13 @@ namespace GameWeAreNowMaking
         private void remove_skill(Skill skGivenSkill)
         {
             // For each index in the skill array...
-            for (int i = 0; i < arrSkills.Length; i++)
+            for (int i = 0; i < this.arrSkills.Length; i++)
             {
                 // If the current skill is the given one...
-                if (arrSkills[i] == skGivenSkill)
+                if (this.arrSkills[i] == skGivenSkill)
                 {
                     // Set the current skill to null and break out of the loop
-                    arrSkills[i] = null;
+                    this.arrSkills[i] = null;
                     break;
                 }
 
@@ -128,7 +133,7 @@ namespace GameWeAreNowMaking
         /// <param name="intSkillIndex"></param>
         private void remove_skill(int intSkillIndex)
         {
-            arrSkills[intSkillIndex] = null;
+            this.arrSkills[intSkillIndex] = null;
         }
     }
 }
